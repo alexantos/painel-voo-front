@@ -1,12 +1,19 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+	selector: 'app-root',
+	imports: [RouterOutlet, MatIconModule],
+	templateUrl: './app.component.html',
+	styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'painel-voo-front';
+
+	readonly router = inject(Router)
+
+	navega(paramentro: string = '') {
+		this.router.navigate([paramentro]);
+	}
 }
